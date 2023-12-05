@@ -10,6 +10,9 @@
 package controllers;
 
 import java.util.Random;
+
+import javax.swing.JButton;
+
 import views.MainWindow;
 
 public class MainController {
@@ -87,25 +90,30 @@ public class MainController {
                         this.mainWindow.flop1Btn.setText("♦" + flop1Str);
                         this.mainWindow.flop2Btn.setText(flop2Str);
                         this.mainWindow.flop3Btn.setText(flop3Str);
-                        this.mainWindow.flop1Btn.setVisible(true);
-                        this.mainWindow.flop2Btn.setVisible(true);
-                        this.mainWindow.flop3Btn.setVisible(true);
+                        setFlopButtonVisibility(true);
                         this.round = Round.FLOP;
                         return;
                     }
                     if (this.round == Round.FLOP) {
-                        int turn = getRandom();
-                        this.mainWindow.turnButton.setText(cards[turn]);
-                        this.mainWindow.turnButton.setVisible(true);
-                        this.round = Round.TURN;
+                        setRound(this.mainWindow.turnButton, Round.TURN);
                         return;
                     }
                     if (this.round == Round.TURN) {
-                        int river = getRandom();
-                        this.mainWindow.riverButton.setText(cards[river]);
-                        this.mainWindow.riverButton.setVisible(true);
-                        this.round = Round.RIVER;
+                        setRound(this.mainWindow.riverButton, Round.RIVER);
                     }
                 });
+    }
+
+    private void setFlopButtonVisibility(boolean visible) {
+        this.mainWindow.flop1Btn.setVisible(visible);
+        this.mainWindow.flop2Btn.setVisible(visible);
+        this.mainWindow.flop3Btn.setVisible(visible);
+    }
+
+    private void setRound(JButton button, Round nextRound) {
+        int randomNumber = getRandom();
+        button.setText(cards[randomNumber]);
+        button.setVisible(true);
+        this.round = nextRound;
     }
 }
