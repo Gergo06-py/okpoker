@@ -38,6 +38,8 @@ public class MainController {
      * We have 13 card
      * 
      * @return int Random card selection
+     * 
+     * @return int Random card selection
      * @see java.util.Random
      */
     private int getRandom() {
@@ -72,6 +74,10 @@ public class MainController {
                     String flop1Str;
                     String flop2Str;
                     String flop3Str;
+                event -> {
+                    String flop1Str;
+                    String flop2Str;
+                    String flop3Str;
 
                     /*
                      * TODO: A kártya színeket is le kell generálni
@@ -82,6 +88,10 @@ public class MainController {
                         int flop2 = getRandom();
                         int flop3 = getRandom();
 
+                        // TODO: a jobb oldal mehet rögtön a setText()-be
+                        flop1Str = cards[flop1];
+                        flop2Str = cards[flop2];
+                        flop3Str = cards[flop3];
                         // TODO: a jobb oldal mehet rögtön a setText()-be
                         flop1Str = cards[flop1];
                         flop2Str = cards[flop2];
